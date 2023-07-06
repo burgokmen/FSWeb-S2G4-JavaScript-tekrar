@@ -79,12 +79,16 @@ console.log("Cember Alani: ", CemberinAlani(15));
 			3c. `ucetambolunenler` dizisindeki sayıların toplamını .reduce metoduyla bulup, sonucu `ucebolunenlerintoplami` değişkenine yazdırın (.reduce metodunu kullanın)
 			3d. `besyuzdenkucuksayilar` adında bir dizi oluşturarak, sayilar dizisinin içindeki 500'den küçük sayıları bu diziye atayın (.filter metodunu kullanın)
 			3e. besyuzdenkucuksayilar dizisindeki sayıları küçükten büyüğe sıralayıp `siralisayilar` adındaki bir diziye aktarın (.sort metodunu kullanın)
-			3f. `tekraredensayilar` adında bir dizi oluşturun. sayilar dizisi içerisindeki bazı sayılar birden fazla kere yazılmış. sayilar dizisi içerisinde birden fazla kez yazılmış sayıları tespit ederek kaç kere tekrar edildiğini belirten bir string oluşturulup `tekraredensayilar` dizisine aktarılmasını istiyoruz. Örnek string: "{sayı} sayısı {tekrarSayisi} kere tekrar edilmiştir"
+			3f. `tekraredensayilar` adında bir dizi oluşturun. sayilar dizisi içerisindeki bazı sayılar birden fazla kere yazılmış. sayilar dizisi içerisinde birden fazla kez yazılmış sayıları tespit ederek
+       kaç kere tekrar edildiğini belirten bir string oluşturulup 
+      `tekraredensayilar` dizisine aktarılmasını istiyoruz. Örnek string: "{sayı} sayısı {tekrarSayisi} kere tekrar edilmiştir"
 			ÖRNEK: sayilar dizisi içerisinde 45 sayısı 3 kere yazılmış. "45 sayısı 3 tekrar edilmiştir" stringini `tekraredensayilar` dizisine aktaracağız.
-			💡 İPUCU: Tekrar edilen sayıları ve kaç kere tekrar edildiğini kaydetmek için bir nesne tanımlamalısınız, bu görevi yapabilmek için en afz 2 kere döngü yazmalısınız. Birinci döngüde hangi sayının kaç kere tekrar edildiğini tespit edip, 2. döngüde stringi oluşturup verilen diziye aktarmalısınız.
+			💡 İPUCU: Tekrar edilen sayıları ve kaç kere tekrar edildiğini kaydetmek için bir nesne tanımlamalısınız, bu görevi yapabilmek için en afz 2 kere döngü yazmalısınız. 
+      Birinci döngüde hangi sayının kaç kere tekrar edildiğini tespit edip, 2. döngüde stringi oluşturup verilen diziye aktarmalısınız.
 	*/
 
 /*  (oto test yok) sayilar dizisi içinde kaç adet sayı olduğunu konsola yazdırın */
+console.log("sayilar dizisinde bu kadar sayi var: ", sayilar.length);
 
 var ucetambolunenler,
   enkucuk,
@@ -143,6 +147,33 @@ siralisayilar = besyuzdenkucuksayilar.sort((a, b) => a - b);
 
 console.log("sirali sayilarrr: ", siralisayilar);
 //3f çözümü
+
+const siralisayilar2 = sayilar.sort((a, b) => a - b);
+/*
+for (let i =0; i < sayilar.length; i++){
+  let number;
+  let tekrarSayisi = 0;
+  if(siralisayilar2[i] == siralisayilar2[i+1]){
+    ++tekrarSayisi;
+    number = siralisayilar2[i];
+  }
+}
+*/
+tekraredensayilar = [];
+let tekrarSayisi = 0;
+let number;
+for (let i = 0; i < sayilar.length; i++) {
+  for (let j = 1; j < sayilar.length; j++) {
+    if (siralisayilar2[i] == siralisayilar2[j]);
+    ++tekrarSayisi;
+    number = siralisayilar2[i];
+  }
+
+  const str = `${number} sayısı ${tekrarSayisi} kere tekrar edilmiştir`;
+  tekraredensayilar.push(str);
+}
+console.log("tekrar eden ne", tekraredensayilar);
+console.log("Siralisayilar tum dizi son: ", siralisayilar2);
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 function sa() {
