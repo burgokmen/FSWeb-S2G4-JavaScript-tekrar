@@ -115,23 +115,34 @@ console.log("en buyuk: ", enbuyuk);
 
 // 3b çözümü:
 
-/* kodlar buraya */
+ucetambolunenler = [];
+
+sayilar.forEach((num) => {
+  if (num % 3 == 0) {
+    ucetambolunenler.push(num);
+  }
+});
+
+console.log("3e bolunen", ucetambolunenler);
 
 //3c çözümü:
 
-/* kodlar buraya */
+ucebolunenlerintoplami = ucetambolunenler.reduce((total, uche) => {
+  return total + uche;
+}, 0);
 
+console.log("3e bolunen toplami: ", ucebolunenlerintoplami);
 //3d çözümü
 
-/* kodlar buraya */
+besyuzdenkucuksayilar = sayilar.filter((num) => num < 500);
 
+console.log("500den guccuk: ", besyuzdenkucuksayilar);
 //3e çözümü
 
-/* kodlar buraya */
+siralisayilar = besyuzdenkucuksayilar.sort((a, b) => a - b);
 
+console.log("sirali sayilarrr: ", siralisayilar);
 //3f çözümü
-
-/* kodlar buraya */
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 function sa() {
