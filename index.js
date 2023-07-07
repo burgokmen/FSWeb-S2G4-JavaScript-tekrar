@@ -66,7 +66,7 @@ console.log("Cember Cevresi: ", CemberinCevresi(5));
 			4. Hesaplanan çemberin alanı döndürülecektir.
 		*/
 
-function CemberinAlani(num) {
+function CemberinAlani(num, pi) {
   return pi * Math.pow(num, 2);
 }
 console.log("Cember Alani: ", CemberinAlani(15));
@@ -134,46 +134,37 @@ console.log("3e bolunen", ucetambolunenler);
 ucebolunenlerintoplami = ucetambolunenler.reduce((total, uche) => {
   return total + uche;
 }, 0);
-
 console.log("3e bolunen toplami: ", ucebolunenlerintoplami);
 //3d çözümü
 
 besyuzdenkucuksayilar = sayilar.filter((num) => num < 500);
-
 console.log("500den guccuk: ", besyuzdenkucuksayilar);
 //3e çözümü
 
 siralisayilar = besyuzdenkucuksayilar.sort((a, b) => a - b);
 
-console.log("sirali sayilarrr: ", siralisayilar);
 //3f çözümü
-
-const siralisayilar2 = sayilar.sort((a, b) => a - b);
-/*
-for (let i =0; i < sayilar.length; i++){
-  let number;
-  let tekrarSayisi = 0;
-  if(siralisayilar2[i] == siralisayilar2[i+1]){
-    ++tekrarSayisi;
-    number = siralisayilar2[i];
-  }
-}
-*/
+const tekrarObje = {};
 tekraredensayilar = [];
-let tekrarSayisi = 0;
-let number;
-for (let i = 0; i < sayilar.length; i++) {
-  for (let j = 1; j < sayilar.length; j++) {
-    if (siralisayilar2[i] == siralisayilar2[j]);
-    ++tekrarSayisi;
-    number = siralisayilar2[i];
-  }
 
-  const str = `${number} sayısı ${tekrarSayisi} kere tekrar edilmiştir`;
-  tekraredensayilar.push(str);
+for (let i = 0; i < sayilar.length; i++) {
+  const objeKey = sayilar[i];
+  if (!!tekrarObje[objeKey]) {
+    tekrarObje[objeKey]++;
+  } else {
+    tekrarObje[objeKey] = 1;
+  }
 }
-console.log("tekrar eden ne", tekraredensayilar);
-console.log("Siralisayilar tum dizi son: ", siralisayilar2);
+
+for (const objeKey in tekrarObje) {
+  if (tekrarObje[objeKey] > 1) {
+    let str = `${objeKey} sayısı ${tekrarObje[objeKey]} kere tekrar edilmiştir`;
+    tekraredensayilar.push(str);
+  }
+}
+
+console.log("dynamic keyin hastasiyiz: ", tekraredensayilar);
+//console.log("tekrar eden ne", tekraredensayilar);
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 function sa() {
